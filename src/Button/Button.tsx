@@ -8,7 +8,7 @@ type ButtonProps = {
 const Button = ({ buttonName }: ButtonProps) => {
   const [buttonCount, setButtonCount] = useState(0);
   const [isDisabled, setIsDisabled] = useState(false);
-  const [timerCount, setTimerCount] = useState(5);
+  const [timerCount, setTimerCount] = useState(0);
   const firstUpdate = useRef(true);
   const timer = (startTime: number) => {
     let count = startTime;
@@ -45,7 +45,7 @@ const Button = ({ buttonName }: ButtonProps) => {
   return (
     <button
       className="button"
-      style={{ backgroundColor: `${buttonName}` }}
+      style={{ backgroundColor: `${buttonName}`, cursor: !isDisabled ? 'pointer' : 'not-allowed' }}
       disabled={isDisabled}
       onClick={() => setButtonCount(buttonCount + 1)}
     >
